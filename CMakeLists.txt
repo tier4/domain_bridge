@@ -27,7 +27,12 @@ find_package(yaml_cpp_vendor REQUIRED)
 find_package(zstd_vendor REQUIRED)
 find_package(zstd REQUIRED)
 
-if(DEFINED ENV{ENABLE_AGNOCAST} AND $ENV{ENABLE_AGNOCAST} EQUAL 1)
+set(ENABLE_AGNOCAST_VAL "$ENV{ENABLE_AGNOCAST}")
+if(NOT DEFINED ENV{ENABLE_AGNOCAST} OR ENABLE_AGNOCAST_VAL STREQUAL "")
+  set(ENABLE_AGNOCAST_VAL "0")
+endif()
+
+if(ENABLE_AGNOCAST_VAL STREQUAL "1")
   find_package(agnocastlib REQUIRED)
   add_compile_definitions(USE_AGNOCAST_ENABLED)
 endif()
