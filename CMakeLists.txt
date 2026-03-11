@@ -90,31 +90,7 @@ target_link_libraries(${PROJECT_NAME}_exec
   ${PROJECT_NAME}_lib
 )
 
-# Only needed to build domain_bridge_rti_qos executable.
-find_package(rti_connext_dds_cmake_module QUIET)
-find_package(rcpputils QUIET)
-
 set(executables ${PROJECT_NAME}_exec)
-
-if(rti_connext_dds_cmake_module_FOUND AND rcpputils_FOUND)
-  rti_find_connextpro()
-  if(RTIConnextDDS_FOUND)
-    add_executable(${PROJECT_NAME}_rti_exec
-      src/domain_bridge_rti_qos.cpp
-    )
-    set_target_properties(${PROJECT_NAME}_rti_exec
-      PROPERTIES OUTPUT_NAME ${PROJECT_NAME}_rti_qos PREFIX "")
-    target_link_libraries(${PROJECT_NAME}_rti_exec
-      ${PROJECT_NAME}_lib
-      RTIConnextDDS::c_api
-    )
-
-    ament_target_dependencies(${PROJECT_NAME}_rti_exec
-      rcpputils
-    )
-    list(APPEND executables ${PROJECT_NAME}_rti_exec)
-  endif()
-endif()
 
 install(DIRECTORY include/
   DESTINATION include
