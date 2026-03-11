@@ -23,7 +23,7 @@
 #include "domain_bridge/process_cmd_line_arguments.hpp"
 
 #ifdef USE_AGNOCAST_ENABLED
-#include "agnocast_callback_isolated_executor.hpp"
+#include <agnocast/agnocast_callback_isolated_executor.hpp>
 #endif
 
 int main(int argc, char ** argv)
