@@ -54,6 +54,7 @@ add_library(${PROJECT_NAME}_lib SHARED
   src/${PROJECT_NAME}/parse_domain_bridge_yaml_config.cpp
   src/${PROJECT_NAME}/qos_options.cpp
   src/${PROJECT_NAME}/service_bridge_options.cpp
+  src/${PROJECT_NAME}/generic_service.cpp
   src/${PROJECT_NAME}/service_typesupport_helpers.cpp
   src/${PROJECT_NAME}/topic_bridge_options.cpp
 )
