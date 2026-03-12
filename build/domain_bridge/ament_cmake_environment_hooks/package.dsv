@@ -1,0 +1,4 @@
+source;share/domain_bridge/local_setup.bash
+source;share/domain_bridge/local_setup.dsv
+source;share/domain_bridge/local_setup.sh
+source;share/domain_bridge/local_setup.zsh

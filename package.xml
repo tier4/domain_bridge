@@ -15,7 +15,9 @@
   <depend>rclcpp_components</depend>
   <depend>rcutils</depend>
   <depend>rosbag2_cpp</depend>
+  <depend>rcpputils</depend>
   <depend>rosidl_typesupport_cpp</depend>
+  <depend>rosidl_typesupport_introspection_cpp</depend>
   <depend>yaml-cpp</depend>
   <depend>zstd_vendor</depend>
 

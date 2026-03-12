@@ -1,0 +1,4 @@
+source;share/domain_bridge/environment/ament_prefix_path.sh
+source;share/domain_bridge/environment/library_path.sh
+source;share/domain_bridge/environment/path.sh
+source;share/domain_bridge/environment/pythonpath.sh

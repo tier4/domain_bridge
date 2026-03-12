@@ -1,0 +1,38 @@
+In file included from /home/makotokurihara/projects/domain_bridge/include/domain_bridge/domain_bridge.hpp:165,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:28:
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc: In instantiation of ‘void domain_bridge::DomainBridge::bridge_service(const string&, size_t, size_t, const domain_bridge::ServiceBridgeOptions&) [with ServiceT = test_msgs::srv::Empty; std::string = std::__cxx11::basic_string<char>; size_t = long unsigned int]’:
+/home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:136:47:   required from here
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc:106:13: error: cannot convert ‘rclcpp::ServicesQoS’ to ‘const rmw_qos_profile_t&’ {aka ‘const rmw_qos_profile_s&’}
+  106 |     rclcpp::ServicesQoS{},
+      |             ^~~~~~~~~~~~~
+      |             |
+      |             rclcpp::ServicesQoS
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:24:
+/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:127:29: note:   initializing argument 2 of ‘typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = test_msgs::srv::Empty; typename rclcpp::Client<ServiceT>::SharedPtr = std::shared_ptr<rclcpp::Client<test_msgs::srv::Empty> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_s; rclcpp::CallbackGroup::SharedPtr = std::shared_ptr<rclcpp::CallbackGroup>]’
+  127 |   const rmw_qos_profile_t & qos_profile,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+gmake[2]: *** [test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/build.make:76: test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:924: test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+In file included from /home/makotokurihara/projects/domain_bridge/include/domain_bridge/domain_bridge.hpp:165,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:28:
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc: In instantiation of ‘void domain_bridge::DomainBridge::bridge_service(const string&, size_t, size_t, const domain_bridge::ServiceBridgeOptions&) [with ServiceT = test_msgs::srv::Empty; std::string = std::__cxx11::basic_string<char>; size_t = long unsigned int]’:
+/home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:136:47:   required from here
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc:106:13: error: cannot convert ‘rclcpp::ServicesQoS’ to ‘const rmw_qos_profile_t&’ {aka ‘const rmw_qos_profile_s&’}
+  106 |     rclcpp::ServicesQoS{},
+      |             ^~~~~~~~~~~~~
+      |             |
+      |             rclcpp::ServicesQoS
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:24:
+/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:127:29: note:   initializing argument 2 of ‘typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = test_msgs::srv::Empty; typename rclcpp::Client<ServiceT>::SharedPtr = std::shared_ptr<rclcpp::Client<test_msgs::srv::Empty> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_s; rclcpp::CallbackGroup::SharedPtr = std::shared_ptr<rclcpp::CallbackGroup>]’
+  127 |   const rmw_qos_profile_t & qos_profile,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+gmake[2]: *** [test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/build.make:76: test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:1014: test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

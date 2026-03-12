@@ -1,0 +1,211 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.13 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.18 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found rclcpp_components: 16.0.18 (/opt/ros/humble/share/rclcpp_components/cmake)
+-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Found zstd_vendor: 0.15.16 (/opt/ros/humble/share/zstd_vendor/cmake)
+-- Found zstd: /usr/lib/x86_64-linux-gnu/libzstd.so (found version "1.4.8") 
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Found test_msgs: 1.2.2 (/opt/ros/humble/share/test_msgs/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found gmock sources under '/opt/ros/humble/src/gmock_vendor': C++ tests using 'Google Mock' will be built
+-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_generator_c>;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_generator_cpp>;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_cpp>;/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_generator_c;/home/makotokurihara/projects/domain_bridge/build/domain_bridge/rosidl_generator_py;$<BUILD_INTERFACE:/home/makotokurihara/projects/domain_bridge/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/makotokurihara/projects/domain_bridge/build/domain_bridge
+[  1%] Generating C code for ROS interfaces
+[  2%] Building CXX object CMakeFiles/test_component.dir/rclcpp_components/node_main_test_component.cpp.o
+[  4%] Generating C++ code for ROS interfaces
+[  4%] Built target ament_cmake_python_copy_domain_bridge
+[  5%] Building CXX object CMakeFiles/domain_bridge_test_component_lib.dir/test/domain_bridge/test_component.cpp.o
+[  7%] Building CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 10%] Building CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 10%] Building CXX object gmock/CMakeFiles/gmock.dir/opt/ros/humble/src/gtest_vendor/src/gtest-all.cc.o
+[ 10%] Built target domain_bridge__cpp
+[ 11%] Building C object CMakeFiles/domain_bridge__rosidl_generator_c.dir/rosidl_generator_c/domain_bridge/msg/detail/compressed_msg__functions.c.o
+[ 13%] Generating C++ introspection for ROS interfaces
+[ 14%] Generating C++ type support dispatch for ROS interfaces
+running egg_info
+[ 16%] Generating C++ type support for eProsima Fast-RTPS
+creating domain_bridge.egg-info
+writing domain_bridge.egg-info/PKG-INFO
+writing dependency_links to domain_bridge.egg-info/dependency_links.txt
+writing top-level names to domain_bridge.egg-info/top_level.txt
+writing manifest file 'domain_bridge.egg-info/SOURCES.txt'
+reading manifest file 'domain_bridge.egg-info/SOURCES.txt'
+writing manifest file 'domain_bridge.egg-info/SOURCES.txt'
+[ 16%] Built target ament_cmake_python_build_domain_bridge_egg
+[ 17%] Linking C shared library libdomain_bridge__rosidl_generator_c.so
+[ 17%] Built target domain_bridge__rosidl_generator_c
+[ 19%] Generating C type support for eProsima Fast-RTPS
+[ 20%] Generating C introspection for ROS interfaces
+[ 22%] Generating C type support dispatch for ROS interfaces
+[ 23%] Building CXX object CMakeFiles/domain_bridge__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/domain_bridge/msg/compressed_msg__type_support.cpp.o
+[ 25%] Building CXX object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/domain_bridge/msg/detail/compressed_msg__type_support.cpp.o
+[ 26%] Building CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/domain_bridge/msg/detail/dds_fastrtps/compressed_msg__type_support.cpp.o
+[ 27%] Building CXX object CMakeFiles/domain_bridge__rosidl_typesupport_c.dir/rosidl_typesupport_c/domain_bridge/msg/compressed_msg__type_support.cpp.o
+[ 29%] Building CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/domain_bridge/msg/detail/compressed_msg__type_support_c.cpp.o
+[ 30%] Building C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/domain_bridge/msg/detail/compressed_msg__type_support.c.o
+[ 32%] Linking CXX shared library libdomain_bridge__rosidl_typesupport_c.so
+[ 33%] Linking C shared library libdomain_bridge__rosidl_typesupport_introspection_c.so
+[ 33%] Built target domain_bridge__rosidl_typesupport_c
+[ 35%] Linking CXX shared library libdomain_bridge__rosidl_typesupport_cpp.so
+[ 35%] Built target domain_bridge__rosidl_typesupport_introspection_c
+[ 35%] Built target domain_bridge__rosidl_typesupport_cpp
+[ 36%] Linking CXX shared library libdomain_bridge__rosidl_typesupport_introspection_cpp.so
+[ 38%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/qos_options.cpp.o
+[ 39%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/component_manager.cpp.o
+[ 41%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge.cpp.o
+[ 42%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/compress_messages.cpp.o
+[ 44%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge_options.cpp.o
+[ 45%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/parse_domain_bridge_yaml_config.cpp.o
+[ 47%] Linking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so
+[ 48%] Linking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_c.so
+[ 48%] Built target domain_bridge__rosidl_typesupport_introspection_cpp
+[ 50%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/service_bridge_options.cpp.o
+[ 50%] Built target domain_bridge__rosidl_typesupport_fastrtps_cpp
+[ 50%] Built target domain_bridge__rosidl_typesupport_fastrtps_c
+[ 51%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/service_typesupport_helpers.cpp.o
+[ 52%] Linking CXX static library libgmock_main.a
+[ 52%] Built target domain_bridge
+[ 54%] Generating Python code for ROS interfaces
+[ 55%] Building CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/topic_bridge_options.cpp.o
+[ 55%] Built target gmock_main
+[ 55%] Built target domain_bridge__py
+[ 57%] Building C object CMakeFiles/domain_bridge__rosidl_generator_py.dir/rosidl_generator_py/domain_bridge/msg/_compressed_msg_s.c.o
+[ 58%] Linking C shared library rosidl_generator_py/domain_bridge/libdomain_bridge__rosidl_generator_py.so
+[ 58%] Built target domain_bridge__rosidl_generator_py
+[ 60%] Building C object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[ 61%] Building C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c.o
+[ 63%] Building C object CMakeFiles/domain_bridge__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c.o
+[ 64%] Linking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[ 66%] Linking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[ 67%] Linking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[ 67%] Built target domain_bridge__rosidl_typesupport_fastrtps_c__pyext
+[ 67%] Built target domain_bridge__rosidl_typesupport_introspection_c__pyext
+[ 67%] Built target domain_bridge__rosidl_typesupport_c__pyext
+[ 69%] Linking CXX static library libgmock.a
+[ 69%] Built target gmock
+[ 70%] Linking CXX executable test_component
+[ 70%] Built target test_component
+[ 72%] Linking CXX shared library libdomain_bridge_test_component_lib.so
+[ 72%] Built target domain_bridge_test_component_lib
+[ 73%] Linking CXX shared library libdomain_bridge.so
+[ 73%] Built target domain_bridge_lib
+[ 75%] Building CXX object test/CMakeFiles/test_domain_bridge.dir/domain_bridge/test_domain_bridge.cpp.o
+[ 76%] Building CXX object test/CMakeFiles/test_parse_domain_bridge_yaml_config.dir/domain_bridge/test_parse_domain_bridge_yaml_config.cpp.o
+[ 77%] Building CXX object CMakeFiles/domain_bridge_exec.dir/src/domain_bridge.cpp.o
+[ 79%] Building CXX object test/CMakeFiles/test_domain_bridge_end_to_end__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_end_to_end.cpp.o
+[ 80%] Building CXX object test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o
+[ 82%] Building CXX object test/CMakeFiles/test_qos_matching__rmw_fastrtps_cpp.dir/domain_bridge/test_qos_matching.cpp.o
+[ 83%] Building CXX object test/CMakeFiles/test_qos_matching__rmw_cyclonedds_cpp.dir/domain_bridge/test_qos_matching.cpp.o
+[ 86%] Building CXX object test/CMakeFiles/test_domain_bridge_end_to_end__rmw_cyclonedds_cpp.dir/domain_bridge/test_domain_bridge_end_to_end.cpp.o
+[ 86%] Building CXX object test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o
+[ 88%] Linking CXX executable test_domain_bridge
+[ 89%] Linking CXX executable test_parse_domain_bridge_yaml_config
+[ 89%] Built target test_domain_bridge
+[ 89%] Built target test_parse_domain_bridge_yaml_config
+In file included from /home/makotokurihara/projects/domain_bridge/include/domain_bridge/domain_bridge.hpp:165,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:28:
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc: In instantiation of ‘void domain_bridge::DomainBridge::bridge_service(const string&, size_t, size_t, const domain_bridge::ServiceBridgeOptions&) [with ServiceT = test_msgs::srv::Empty; std::string = std::__cxx11::basic_string<char>; size_t = long unsigned int]’:
+/home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:136:47:   required from here
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc:106:13: error: cannot convert ‘rclcpp::ServicesQoS’ to ‘const rmw_qos_profile_t&’ {aka ‘const rmw_qos_profile_s&’}
+  106 |     rclcpp::ServicesQoS{},
+      |             ^~~~~~~~~~~~~
+      |             |
+      |             rclcpp::ServicesQoS
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:24:
+/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:127:29: note:   initializing argument 2 of ‘typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = test_msgs::srv::Empty; typename rclcpp::Client<ServiceT>::SharedPtr = std::shared_ptr<rclcpp::Client<test_msgs::srv::Empty> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_s; rclcpp::CallbackGroup::SharedPtr = std::shared_ptr<rclcpp::CallbackGroup>]’
+  127 |   const rmw_qos_profile_t & qos_profile,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+gmake[2]: *** [test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/build.make:76: test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:924: test/CMakeFiles/test_domain_bridge_services__rmw_cyclonedds_cpp.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 91%] Linking CXX executable domain_bridge
+[ 92%] Linking CXX executable test_qos_matching__rmw_fastrtps_cpp
+In file included from /home/makotokurihara/projects/domain_bridge/include/domain_bridge/domain_bridge.hpp:165,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:28:
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc: In instantiation of ‘void domain_bridge::DomainBridge::bridge_service(const string&, size_t, size_t, const domain_bridge::ServiceBridgeOptions&) [with ServiceT = test_msgs::srv::Empty; std::string = std::__cxx11::basic_string<char>; size_t = long unsigned int]’:
+/home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:136:47:   required from here
+/home/makotokurihara/projects/domain_bridge/include/domain_bridge/service_bridge_impl.inc:106:13: error: cannot convert ‘rclcpp::ServicesQoS’ to ‘const rmw_qos_profile_t&’ {aka ‘const rmw_qos_profile_s&’}
+  106 |     rclcpp::ServicesQoS{},
+      |             ^~~~~~~~~~~~~
+      |             |
+      |             rclcpp::ServicesQoS
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22,
+                 from /home/makotokurihara/projects/domain_bridge/test/domain_bridge/test_domain_bridge_services.cpp:24:
+/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:127:29: note:   initializing argument 2 of ‘typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = test_msgs::srv::Empty; typename rclcpp::Client<ServiceT>::SharedPtr = std::shared_ptr<rclcpp::Client<test_msgs::srv::Empty> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_s; rclcpp::CallbackGroup::SharedPtr = std::shared_ptr<rclcpp::CallbackGroup>]’
+  127 |   const rmw_qos_profile_t & qos_profile,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+gmake[2]: *** [test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/build.make:76: test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:1014: test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/all] Error 2
+[ 92%] Built target domain_bridge_exec
+[ 92%] Built target test_qos_matching__rmw_fastrtps_cpp
+[ 94%] Linking CXX executable test_qos_matching__rmw_cyclonedds_cpp
+[ 94%] Built target test_qos_matching__rmw_cyclonedds_cpp
+[ 95%] Linking CXX executable test_domain_bridge_end_to_end__rmw_cyclonedds_cpp
+[ 97%] Linking CXX executable test_domain_bridge_end_to_end__rmw_fastrtps_cpp
+[ 97%] Built target test_domain_bridge_end_to_end__rmw_fastrtps_cpp
+[ 97%] Built target test_domain_bridge_end_to_end__rmw_cyclonedds_cpp
+gmake: *** [Makefile:146: all] Error 2
