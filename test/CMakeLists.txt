@@ -1,5 +1,6 @@
 find_package(ament_cmake_gmock REQUIRED)
 find_package(ament_cmake_gtest REQUIRED)
+find_package(example_interfaces REQUIRED)
 find_package(launch_testing_ament_cmake REQUIRED)
 find_package(rmw_implementation_cmake REQUIRED)
 find_package(test_msgs REQUIRED)
@@ -59,6 +60,18 @@ function(add_communication_tests)
       "test_msgs"
     )
     target_link_libraries(test_domain_bridge_services${target_suffix} ${PROJECT_NAME}_lib)
+  endif()
+
+  ament_add_gmock(test_generic_service_bridge${target_suffix}
+    domain_bridge/test_generic_service_bridge.cpp
+    ENV ${rmw_implementation_env}
+  )
+  if(TARGET test_generic_service_bridge${target_suffix})
+    ament_target_dependencies(test_generic_service_bridge${target_suffix}
+      "rclcpp"
+      "example_interfaces"
+    )
+    target_link_libraries(test_generic_service_bridge${target_suffix} ${PROJECT_NAME}_lib)
   endif()
 endfunction()
 call_for_each_rmw_implementation(add_communication_tests)

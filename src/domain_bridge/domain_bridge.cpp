@@ -687,6 +687,8 @@ void DomainBridge::bridge_service(
     resolved_service_name,
     type,
     client_options);
+  from_domain_node->get_node_services_interface()->add_client(
+    std::dynamic_pointer_cast<rclcpp::ClientBase>(client), nullptr);
 
   auto create_service_cb = [
     to_domain_node,
@@ -711,12 +713,15 @@ void DomainBridge::bridge_service(
           });
       };
 
-    return std::make_shared<domain_bridge::GenericService>(
+    auto service = std::make_shared<domain_bridge::GenericService>(
       to_domain_node->get_node_base_interface()->get_shared_rcl_node_handle(),
       service_remapped,
       type,
       handle_request,
       service_options);
+    to_domain_node->get_node_services_interface()->add_service(
+      std::dynamic_pointer_cast<rclcpp::ServiceBase>(service), nullptr);
+    return service;
   };
 
   detail::add_service_bridge(

@@ -20,6 +20,8 @@
 
 #include "rcl/service.h"
 #include "rclcpp/exceptions.hpp"
+#include "rclcpp/logger.hpp"
+#include "rclcpp/logging.hpp"
 #include "rosidl_runtime_cpp/message_initialization.hpp"
 #include "rosidl_typesupport_introspection_cpp/service_introspection.hpp"
 
@@ -46,8 +48,22 @@ GenericService::GenericService(
   request_members_ = service_members->request_members_;
   response_members_ = service_members->response_members_;
 
+  service_handle_ = std::shared_ptr<rcl_service_t>(
+    new rcl_service_t,
+    [handle = node_handle, service_name](rcl_service_t * service) {
+      if (rcl_service_fini(service, handle.get()) != RCL_RET_OK) {
+        RCLCPP_ERROR(
+          rclcpp::get_node_logger(handle.get()),
+          "Error in destruction of rcl service handle: %s",
+          rcl_get_error_string().str);
+        rcl_reset_error();
+      }
+      delete service;
+    });
+  *service_handle_ = rcl_get_zero_initialized_service();
+
   rcl_ret_t ret = rcl_service_init(
-    get_service_handle().get(),
+    service_handle_.get(),
     node_handle.get(),
     service_ts,
     service_name.c_str(),
