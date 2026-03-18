@@ -27,15 +27,17 @@ find_package(yaml_cpp_vendor REQUIRED)
 find_package(zstd_vendor REQUIRED)
 find_package(zstd REQUIRED)
 
-set(ENABLE_AGNOCAST_VAL "$ENV{ENABLE_AGNOCAST}")
-if(NOT DEFINED ENV{ENABLE_AGNOCAST} OR ENABLE_AGNOCAST_VAL STREQUAL "")
-  set(ENABLE_AGNOCAST_VAL "0")
+# if ENABLE_AGNOCAST environment variable is set to 1, enable agnocast components
+# and define a compile definition to conditionally compile code that depends on agnocast
+set(ENABLE_AGNOCAST_DEFAULT "$ENV{ENABLE_AGNOCAST}")
+if(ENABLE_AGNOCAST_DEFAULT STREQUAL "1")
+  set(ENABLE_AGNOCAST_DEFAULT "ON")
+else()
+  # default to OFF when the environment variable is unset or not equal to "1"
+  set(ENABLE_AGNOCAST_DEFAULT "OFF")
 endif()
 
-if(ENABLE_AGNOCAST_VAL STREQUAL "1")
-  find_package(agnocastlib REQUIRED)
-  add_compile_definitions(USE_AGNOCAST_ENABLED)
-endif()
+option(ENABLE_AGNOCAST "Enable Agnocast components" ${ENABLE_AGNOCAST_DEFAULT})
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   msg/CompressedMsg.msg
@@ -61,7 +63,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
   target_link_libraries(${PROJECT_NAME}_lib stdc++fs)
 endif()
 
-if(ENABLE_AGNOCAST_VAL STREQUAL "1")
+if(ENABLE_AGNOCAST)
   ament_target_dependencies(${PROJECT_NAME}_lib agnocastlib)
 endif()
 
@@ -88,7 +90,7 @@ add_executable(${PROJECT_NAME}_exec
 ament_target_dependencies(${PROJECT_NAME}_exec
   "rclcpp_components")
 
-if(ENABLE_AGNOCAST_VAL STREQUAL "1")
+if(ENABLE_AGNOCAST)
   ament_target_dependencies(${PROJECT_NAME}_lib agnocastlib)
 endif()
 
