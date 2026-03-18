@@ -63,10 +63,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
   target_link_libraries(${PROJECT_NAME}_lib stdc++fs)
 endif()
 
-if(ENABLE_AGNOCAST)
-  ament_target_dependencies(${PROJECT_NAME}_lib agnocastlib)
-endif()
-
 ament_target_dependencies(${PROJECT_NAME}_lib
   rclcpp
   rclcpp_components
@@ -91,7 +87,9 @@ ament_target_dependencies(${PROJECT_NAME}_exec
   "rclcpp_components")
 
 if(ENABLE_AGNOCAST)
-  ament_target_dependencies(${PROJECT_NAME}_lib agnocastlib)
+  find_package(agnocastlib REQUIRED)
+  ament_target_dependencies(${PROJECT_NAME}_exec agnocastlib)
+  target_compile_definitions(${PROJECT_NAME}_exec PRIVATE USE_AGNOCAST_ENABLED)
 endif()
 
 set_target_properties(${PROJECT_NAME}_exec PROPERTIES OUTPUT_NAME ${PROJECT_NAME} PREFIX "")
