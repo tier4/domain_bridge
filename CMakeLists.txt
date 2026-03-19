@@ -63,10 +63,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
   target_link_libraries(${PROJECT_NAME}_lib stdc++fs)
 endif()
 
-if(ENABLE_AGNOCAST)
-  ament_target_dependencies(${PROJECT_NAME}_lib agnocastlib)
-endif()
-
 ament_target_dependencies(${PROJECT_NAME}_lib
   rclcpp
   rclcpp_components
