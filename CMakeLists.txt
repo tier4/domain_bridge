@@ -88,7 +88,6 @@ ament_target_dependencies(${PROJECT_NAME}_exec
 
 if(ENABLE_AGNOCAST)
   find_package(agnocastlib REQUIRED)
-  ament_target_dependencies(${PROJECT_NAME}_exec agnocastlib)
   target_compile_definitions(${PROJECT_NAME}_exec PRIVATE USE_AGNOCAST_ENABLED)
 endif()
 

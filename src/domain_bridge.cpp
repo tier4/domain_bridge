@@ -38,10 +38,10 @@ int main(int argc, char ** argv)
 
 #ifdef USE_AGNOCAST_ENABLED
   // use agnocast callback isolated executor if the option is enabled
-  auto executor = std::make_shared<agnocast::CallbackIsolatedAgnocastExecutor>();
+  std::shared_ptr<rclcpp::Executor> executor = std::make_shared<agnocast::CallbackIsolatedAgnocastExecutor>();
 #else
   // Add component manager node and domain bridge to single-threaded executor
-  auto executor = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
+  std::shared_ptr<rclcpp::Executor> executor = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
 #endif
 
   auto node = std::make_shared<domain_bridge::ComponentManager>(executor);
