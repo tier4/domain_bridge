@@ -27,6 +27,18 @@ find_package(yaml_cpp_vendor REQUIRED)
 find_package(zstd_vendor REQUIRED)
 find_package(zstd REQUIRED)
 
+# if ENABLE_AGNOCAST environment variable is set to 1, enable agnocast components
+# and define a compile definition to conditionally compile code that depends on agnocast
+set(ENABLE_AGNOCAST_DEFAULT "$ENV{ENABLE_AGNOCAST}")
+if(ENABLE_AGNOCAST_DEFAULT STREQUAL "1")
+  set(ENABLE_AGNOCAST_DEFAULT "ON")
+else()
+  # default to OFF when the environment variable is unset or not equal to "1"
+  set(ENABLE_AGNOCAST_DEFAULT "OFF")
+endif()
+
+option(ENABLE_AGNOCAST "Enable Agnocast components" ${ENABLE_AGNOCAST_DEFAULT})
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   msg/CompressedMsg.msg
 )
@@ -74,37 +86,19 @@ add_executable(${PROJECT_NAME}_exec
 ament_target_dependencies(${PROJECT_NAME}_exec
   "rclcpp_components")
 
+if(ENABLE_AGNOCAST)
+  find_package(agnocastlib REQUIRED)
+  target_compile_definitions(${PROJECT_NAME}_exec PRIVATE USE_AGNOCAST_ENABLED)
+  ament_target_dependencies(${PROJECT_NAME}_exec agnocastlib)
+endif()
+
 set_target_properties(${PROJECT_NAME}_exec PROPERTIES OUTPUT_NAME ${PROJECT_NAME} PREFIX "")
 
 target_link_libraries(${PROJECT_NAME}_exec
   ${PROJECT_NAME}_lib
 )
 
-# Only needed to build domain_bridge_rti_qos executable.
-find_package(rti_connext_dds_cmake_module QUIET)
-find_package(rcpputils QUIET)
-
 set(executables ${PROJECT_NAME}_exec)
-
-if(rti_connext_dds_cmake_module_FOUND AND rcpputils_FOUND)
-  rti_find_connextpro()
-  if(RTIConnextDDS_FOUND)
-    add_executable(${PROJECT_NAME}_rti_exec
-      src/domain_bridge_rti_qos.cpp
-    )
-    set_target_properties(${PROJECT_NAME}_rti_exec
-      PROPERTIES OUTPUT_NAME ${PROJECT_NAME}_rti_qos PREFIX "")
-    target_link_libraries(${PROJECT_NAME}_rti_exec
-      ${PROJECT_NAME}_lib
-      RTIConnextDDS::c_api
-    )
-
-    ament_target_dependencies(${PROJECT_NAME}_rti_exec
-      rcpputils
-    )
-    list(APPEND executables ${PROJECT_NAME}_rti_exec)
-  endif()
-endif()
 
 install(DIRECTORY include/
   DESTINATION include

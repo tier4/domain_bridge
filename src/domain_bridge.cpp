@@ -22,6 +22,10 @@
 #include "domain_bridge/parse_domain_bridge_yaml_config.hpp"
 #include "domain_bridge/process_cmd_line_arguments.hpp"
 
+#ifdef USE_AGNOCAST_ENABLED
+#include <agnocast/agnocast_callback_isolated_executor.hpp>
+#endif
+
 int main(int argc, char ** argv)
 {
   auto arguments = rclcpp::init_and_remove_ros_arguments(argc, argv);
@@ -32,8 +36,14 @@ int main(int argc, char ** argv)
   }
   domain_bridge::DomainBridge domain_bridge(*config_rc_pair.first);
 
+#ifdef USE_AGNOCAST_ENABLED
+  // use agnocast callback isolated executor if the option is enabled
+  std::shared_ptr<rclcpp::Executor> executor = std::make_shared<agnocast::CallbackIsolatedAgnocastExecutor>();
+#else
   // Add component manager node and domain bridge to single-threaded executor
-  auto executor = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
+  std::shared_ptr<rclcpp::Executor> executor = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
+#endif
+
   auto node = std::make_shared<domain_bridge::ComponentManager>(executor);
 
   domain_bridge.add_to_executor(*executor);
