@@ -635,6 +635,102 @@ void DomainBridge::bridge_topic(
   impl_->bridge_topic(topic_bridge, options);
 }
 
+void DomainBridge::bridge_service(
+  const std::string & service_name,
+  const std::string & type,
+  std::size_t from_domain_id,
+  std::size_t to_domain_id,
+  const ServiceBridgeOptions & options)
+{
+  const auto & node_name = detail::get_node_name(*impl_);
+  const std::string & resolved_service_name = rclcpp::expand_topic_or_service_name(
+    service_name, node_name, "/", true);
+
+  std::string service_remapped = resolved_service_name;
+  if (!options.remap_name().empty()) {
+    service_remapped = rclcpp::expand_topic_or_service_name(
+      options.remap_name(), node_name, "/", true);
+  }
+
+  detail::ServiceBridge service_bridge = {
+    resolved_service_name, from_domain_id, to_domain_id};
+
+  if (detail::is_bridging_service(*impl_, service_bridge)) {
+    std::cerr << "Service '" << resolved_service_name << "'"
+              << " already bridged from domain " << std::to_string(from_domain_id)
+              << " to domain " << std::to_string(to_domain_id)
+              << ", ignoring" << std::endl;
+    return;
+  }
+
+  rclcpp::Node::SharedPtr from_domain_node =
+    detail::get_node_for_domain(*impl_, from_domain_id);
+  rclcpp::Node::SharedPtr to_domain_node =
+    detail::get_node_for_domain(*impl_, to_domain_id);
+
+  rcl_client_options_t client_options = rcl_client_get_default_options();
+  auto client = std::make_shared<domain_bridge::GenericClient>(
+    from_domain_node->get_node_base_interface().get(),
+    from_domain_node->get_node_graph_interface(),
+    resolved_service_name,
+    type,
+    client_options);
+  from_domain_node->get_node_services_interface()->add_client(
+    std::dynamic_pointer_cast<rclcpp::ClientBase>(client), nullptr);
+
+  RCLCPP_INFO(
+    from_domain_node->get_logger(),
+    "Waiting for service server '%s' [%s] on domain %zu to bridge to domain %zu",
+    resolved_service_name.c_str(), type.c_str(), from_domain_id, to_domain_id);
+
+  auto create_service_cb = [
+    to_domain_node,
+    service_remapped,
+    type,
+    from_domain_id,
+    to_domain_id,
+    client]()
+    -> std::shared_ptr<rclcpp::ServiceBase>
+  {
+    rcl_service_options_t service_options = rcl_service_get_default_options();
+    auto handle_request =
+      [client, service_remapped](
+        std::shared_ptr<domain_bridge::GenericService> me,
+        std::shared_ptr<rmw_request_id_t> request_header,
+        std::shared_ptr<void> request) -> void
+      {
+        RCLCPP_INFO(
+          rclcpp::get_logger("domain_bridge"),
+          "Forwarding service request on '%s'",
+          service_remapped.c_str());
+        client->async_send_request(
+          std::move(request),
+          [me, request_header](domain_bridge::GenericClient::SharedFuture future_response)
+          {
+            auto response = future_response.get();
+            me->send_response(*request_header, response);
+          });
+      };
+
+    auto service = std::make_shared<domain_bridge::GenericService>(
+      to_domain_node->get_node_base_interface()->get_shared_rcl_node_handle(),
+      service_remapped,
+      type,
+      handle_request,
+      service_options);
+    to_domain_node->get_node_services_interface()->add_service(
+      std::dynamic_pointer_cast<rclcpp::ServiceBase>(service), nullptr);
+    RCLCPP_INFO(
+      to_domain_node->get_logger(),
+      "Service bridge active: '%s' [%s] domain %zu -> domain %zu",
+      service_remapped.c_str(), type.c_str(), from_domain_id, to_domain_id);
+    return service;
+  };
+
+  detail::add_service_bridge(
+    *impl_, from_domain_node, service_bridge, create_service_cb, client);
+}
+
 std::vector<TopicBridge> DomainBridge::get_bridged_topics() const
 {
   return impl_->get_bridged_topics();
