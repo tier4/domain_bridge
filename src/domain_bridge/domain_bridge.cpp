@@ -699,15 +699,21 @@ void DomainBridge::bridge_service(
   {
     rcl_service_options_t service_options = rcl_service_get_default_options();
     auto handle_request =
-      [client](
+      [client, service_remapped](
         std::shared_ptr<domain_bridge::GenericService> me,
         std::shared_ptr<rmw_request_id_t> request_header,
         std::shared_ptr<void> request) -> void
       {
+        RCLCPP_ERROR(
+          rclcpp::get_logger("domain_bridge"),
+          "bridge_service: forwarding request service='%s'", service_remapped.c_str());
         client->async_send_request(
           std::move(request),
-          [me, request_header](domain_bridge::GenericClient::SharedFuture future_response)
+          [me, request_header, service_remapped](domain_bridge::GenericClient::SharedFuture future_response)
           {
+            RCLCPP_ERROR(
+              rclcpp::get_logger("domain_bridge"),
+              "bridge_service: received response service='%s'", service_remapped.c_str());
             auto response = future_response.get();
             me->send_response(*request_header, response);
           });
