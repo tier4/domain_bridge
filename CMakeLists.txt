@@ -16,12 +16,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rcutils REQUIRED)
 # Leverage rosbag2's generic type support utilities
 find_package(rosbag2_cpp REQUIRED)
+find_package(rcpputils REQUIRED)
 find_package(rosidl_typesupport_cpp REQUIRED)
+find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(yaml_cpp_vendor REQUIRED)
 find_package(zstd_vendor REQUIRED)
@@ -51,6 +54,9 @@ add_library(${PROJECT_NAME}_lib SHARED
   src/${PROJECT_NAME}/parse_domain_bridge_yaml_config.cpp
   src/${PROJECT_NAME}/qos_options.cpp
   src/${PROJECT_NAME}/service_bridge_options.cpp
+  src/${PROJECT_NAME}/generic_client.cpp
+  src/${PROJECT_NAME}/generic_service.cpp
+  src/${PROJECT_NAME}/service_typesupport_helpers.cpp
   src/${PROJECT_NAME}/topic_bridge_options.cpp
 )
 
@@ -64,11 +70,14 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 ament_target_dependencies(${PROJECT_NAME}_lib
+  ament_index_cpp
   rclcpp
   rclcpp_components
+  rcpputils
   rcutils
   rosbag2_cpp
   rosidl_typesupport_cpp
+  rosidl_typesupport_introspection_cpp
   yaml_cpp_vendor
   zstd
 )
@@ -123,10 +132,13 @@ install(DIRECTORY examples launch
 
 ament_export_targets(export_${PROJECT_NAME})
 ament_export_dependencies(
+  ament_index_cpp
   rclcpp
   rclcpp_components
-  rosbag2_cpp
+  rcpputils
   rcutils
+  rosbag2_cpp
+  rosidl_typesupport_introspection_cpp
   yaml_cpp_vendor
   zstd_vendor
   zstd

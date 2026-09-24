@@ -21,6 +21,7 @@
 
 #include "domain_bridge/domain_bridge_config.hpp"
 #include "domain_bridge/parse_domain_bridge_yaml_config.hpp"
+#include "domain_bridge/service_bridge.hpp"
 #include "domain_bridge/topic_bridge.hpp"
 
 class TestParseDomainBridgeYamlConfig : public ::testing::Test
@@ -257,4 +258,27 @@ TEST_F(TestParseDomainBridgeYamlConfig, invalid)
     EXPECT_THROW(
       domain_bridge::parse_domain_bridge_yaml_config(yaml_path), domain_bridge::YamlParsingError);
   }
+}
+
+TEST_F(TestParseDomainBridgeYamlConfig, services)
+{
+  const std::string yaml_path =
+    (test_yaml_dir_ / std::filesystem::path{"services.yaml"}).string();
+  auto config = domain_bridge::parse_domain_bridge_yaml_config(yaml_path);
+
+  ASSERT_EQ(config.services.size(), 2u);
+
+  auto & [sb1, opts1] = config.services[0];
+  EXPECT_EQ(sb1.service_name, "add_two_ints");
+  EXPECT_EQ(sb1.type_name, "example_interfaces/srv/AddTwoInts");
+  EXPECT_EQ(sb1.from_domain_id, 0u);
+  EXPECT_EQ(sb1.to_domain_id, 1u);
+  EXPECT_TRUE(opts1.remap_name().empty());
+
+  auto & [sb2, opts2] = config.services[1];
+  EXPECT_EQ(sb2.service_name, "my_service");
+  EXPECT_EQ(sb2.type_name, "test_msgs/srv/Empty");
+  EXPECT_EQ(sb2.from_domain_id, 2u);
+  EXPECT_EQ(sb2.to_domain_id, 3u);
+  EXPECT_EQ(opts2.remap_name(), "my_renamed_service");
 }

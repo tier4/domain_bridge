@@ -1,0 +1,12 @@
+name: test_service_bridge
+from_domain: 0
+to_domain: 1
+
+services:
+  add_two_ints:
+    type: example_interfaces/srv/AddTwoInts
+  my_service:
+    type: test_msgs/srv/Empty
+    from_domain: 2
+    to_domain: 3
+    remap: my_renamed_service

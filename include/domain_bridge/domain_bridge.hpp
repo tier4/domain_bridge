@@ -148,6 +148,24 @@ public:
     size_t to_domain_id,
     const ServiceBridgeOptions & options = ServiceBridgeOptions());
 
+  /// Bridge a service from one domain to another using a service type name string.
+  /**
+   * Uses GenericService/GenericClient to bridge without compile-time type information.
+   *
+   * \param service: Name of the service to be bridged.
+   * \param type: Service type name (e.g. "example_interfaces/srv/AddTwoInts").
+   * \param from_domain_id: Domain id where the actual service server exists.
+   * \param to_domain_id: Domain id where a proxy service server will be created.
+   * \param options: Options for bridging the service.
+   */
+  DOMAIN_BRIDGE_PUBLIC
+  void bridge_service(
+    const std::string & service,
+    const std::string & type,
+    size_t from_domain_id,
+    size_t to_domain_id,
+    const ServiceBridgeOptions & options = ServiceBridgeOptions());
+
   /// Get bridged topics.
   /**
    * \return Topic bridges created by `bridge_topic()`.
