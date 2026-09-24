@@ -119,6 +119,13 @@ GenericClient::create_request()
 GenericClient::SharedFuture
 GenericClient::async_send_request(SharedRequest request, ResponseCallback callback)
 {
+  // The lock must be held across rcl_send_request() as well as the insertion into
+  // `pending_requests_`.  Otherwise a response that arrives in between is dropped by
+  // handle_response(), because the sequence number is not registered yet, and the returned
+  // future never becomes ready.  This mirrors rclcpp::Client::async_send_request_impl() and
+  // rclcpp::GenericClient::async_send_request_impl().
+  std::lock_guard<std::mutex> lock(pending_requests_mutex_);
+
   int64_t sequence_number;
   rcl_ret_t ret = rcl_send_request(
     get_client_handle().get(), request.get(), &sequence_number);
@@ -126,7 +133,6 @@ GenericClient::async_send_request(SharedRequest request, ResponseCallback callba
     rclcpp::exceptions::throw_from_rcl_error(ret, "Failed to send request");
   }
 
-  std::lock_guard<std::mutex> lock(pending_requests_mutex_);
   PendingRequest pr;
   pr.callback = std::move(callback);
   pr.future = pr.promise.get_future().share();

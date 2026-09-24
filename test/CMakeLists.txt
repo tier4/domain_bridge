@@ -23,6 +23,14 @@ if(TARGET test_parse_domain_bridge_yaml_config)
   target_link_libraries(test_parse_domain_bridge_yaml_config ${PROJECT_NAME}_lib)
 endif()
 
+ament_add_gmock(test_process_cmd_line_arguments
+  domain_bridge/test_process_cmd_line_arguments.cpp
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/domain_bridge"
+)
+if(TARGET test_process_cmd_line_arguments)
+  target_link_libraries(test_process_cmd_line_arguments ${PROJECT_NAME}_lib)
+endif()
+
 # The following tests are run for each available RMW implementation
 function(add_communication_tests)
   set(rmw_implementation_env RMW_IMPLEMENTATION=${rmw_implementation})

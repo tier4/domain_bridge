@@ -270,7 +270,7 @@ using GenericServiceCallback = std::function<void(
 
 /// A type-erased service server that can be created from a service type name string.
 /// Backported from Rolling rclcpp's GenericService, adapted for Humble's ServiceBase API.
-// TODO(jazzy): On Jazzy+, adapt virtual method signatures to const reference parameters
+// Jazzy needs no adaptation: handle_request() still takes its arguments by value there
 // TODO(rolling): Replace with rclcpp::GenericService when available
 class GenericService
   : public rclcpp::ServiceBase,
@@ -491,8 +491,8 @@ namespace domain_bridge
 
 /// A type-erased service client that can be created from a service type name string.
 /// Backported from Rolling rclcpp's GenericClient, adapted for Humble's ClientBase API.
-// TODO(jazzy): On Jazzy+, use rclcpp::GenericClient directly (available natively)
-// TODO(rolling): Replace with rclcpp::GenericClient when available
+// TODO(jazzy): Replace with rclcpp::GenericClient, available natively since Jazzy
+// TODO(rolling): Use its async_send_request() overload taking a response callback
 class GenericClient : public rclcpp::ClientBase
 {
 public:

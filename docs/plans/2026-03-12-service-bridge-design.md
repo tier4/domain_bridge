@@ -226,12 +226,13 @@ Test service type: `example_interfaces/srv/AddTwoInts` (already in test dependen
 
 ### Future Extension Points
 
-Code comments will indicate where Jazzy/Rolling adaptations should be made:
+Jazzy needs no source change; it only allows dropping `generic_client.{hpp,cpp}` (but its
+`rclcpp::GenericClient` has no callback-taking `async_send_request()`) and
+`service_typesupport_helpers.{hpp,cpp}`. `GenericService` stays until Rolling.
 
 ```cpp
-// TODO(jazzy): Use rclcpp::GenericClient on Jazzy+ (available natively)
-// TODO(jazzy): Adapt to const reference signatures for ServiceBase/ClientBase
-// TODO(rolling): Use rclcpp::GenericService and GenericClient directly,
-//                removing the backported implementations from domain_bridge
+// TODO(jazzy): Replace with rclcpp::GenericClient, available natively since Jazzy
+// TODO(rolling): Replace with rclcpp::GenericService when available
+// TODO(rolling): Use GenericClient's async_send_request() overload taking a callback
 // TODO(future): Add auto_remove support for service bridges
 ```

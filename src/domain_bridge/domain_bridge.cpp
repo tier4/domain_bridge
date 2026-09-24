@@ -664,6 +664,16 @@ void DomainBridge::bridge_service(
       options.remap_name(), node_name, "/", true);
   }
 
+  // Ensure 'to' domain and 'from' domain are not equal.
+  // Otherwise the proxy service would be created on the same node as the client, and the
+  // client would end up calling the proxy service itself.
+  if (to_domain_id == from_domain_id) {
+    std::cerr << "Cannot bridge service '" << resolved_service_name << "' from domain " <<
+      std::to_string(from_domain_id) << " to domain " << std::to_string(to_domain_id) <<
+      ". Domain IDs must be different." << std::endl;
+    return;
+  }
+
   detail::ServiceBridge service_bridge = {
     resolved_service_name, from_domain_id, to_domain_id};
 

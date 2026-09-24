@@ -32,8 +32,8 @@
 namespace domain_bridge
 {
 
-// TODO(jazzy): On Jazzy+, use rclcpp::GenericClient directly (available natively)
-// TODO(rolling): Replace with rclcpp::GenericClient when available
+// TODO(jazzy): Replace with rclcpp::GenericClient, available natively since Jazzy
+// TODO(rolling): Use its async_send_request() overload taking a response callback
 class GenericClient : public rclcpp::ClientBase
 {
 public:

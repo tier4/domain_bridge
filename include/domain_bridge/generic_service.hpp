@@ -37,7 +37,7 @@ using GenericServiceCallback = std::function<void(
     std::shared_ptr<rmw_request_id_t>,
     std::shared_ptr<void>)>;
 
-// TODO(jazzy): On Jazzy+, adapt virtual method signatures to const reference parameters
+// Jazzy needs no adaptation: handle_request() still takes its arguments by value there
 // TODO(rolling): Replace with rclcpp::GenericService when available
 class GenericService : public rclcpp::ServiceBase,
                        public std::enable_shared_from_this<GenericService>
