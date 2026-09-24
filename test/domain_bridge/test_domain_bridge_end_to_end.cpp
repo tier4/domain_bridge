@@ -378,6 +378,22 @@ TEST_F(TestDomainBridgeEndToEnd, create_reversed_bridge)
   ASSERT_TRUE(wait_for_publisher(node_2_, topic_name));
 }
 
+TEST_F(TestDomainBridgeEndToEnd, create_bridge_without_waiting_for_publisher)
+{
+  const std::string topic_name("test_no_wait_for_publisher");
+
+  // No publisher on domain 1
+  domain_bridge::DomainBridge bridge;
+  domain_bridge::TopicBridgeOptions topic_bridge_options;
+  topic_bridge_options.wait_for_publisher(false);
+  bridge.bridge_topic(
+    {topic_name, "test_msgs/msg/BasicTypes", kDomain1, kDomain2},
+    topic_bridge_options
+  );
+
+  ASSERT_TRUE(wait_for_publisher(node_2_, topic_name));
+}
+
 TEST_F(TestDomainBridgeEndToEnd, domain_bridge_component_manager)
 {
   rclcpp::init(0, nullptr);

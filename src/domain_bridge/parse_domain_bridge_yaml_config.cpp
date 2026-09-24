@@ -260,6 +260,10 @@ update_domain_bridge_config_from_yaml(
         options.reversed(topic_info["reversed"].as<bool>());
       }
 
+      if (topic_info["wait_for_publisher"]) {
+        options.wait_for_publisher(topic_info["wait_for_publisher"].as<bool>());
+      }
+
       // Add topic bridge to config
       domain_bridge_config.topics.push_back({{topic, type, from_domain_id, to_domain_id}, options});
     }
