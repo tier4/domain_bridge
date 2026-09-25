@@ -36,6 +36,14 @@ topics:
     type: example_interfaces/msg/String
     remap: chitter
 
+  # Bridge "/tf_static" topic from domain ID 2 to domain ID 3 without waiting for a publisher
+  # The bridge is created at startup with the QoS below, since there is no publisher to match
+  tf_static:
+    type: tf2_msgs/msg/TFMessage
+    wait_for_publisher: False
+    qos:
+      durability: transient_local
+
 services:
   add_two_ints:
     type: example_interfaces/srv/AddTwoInts

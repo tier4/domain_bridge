@@ -24,3 +24,6 @@ topics:
       lifespan: -5
     remap: ''
     reversed: True
+  qux:
+    type: test_msgs/msg/Empty
+    wait_for_publisher: False
