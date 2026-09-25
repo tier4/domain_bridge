@@ -30,6 +30,7 @@
 #include "domain_bridge/msg/compressed_msg.hpp"
 
 #include "wait_for_publisher.hpp"
+#include "wait_for_subscription.hpp"
 
 static constexpr std::size_t kDomain1{1u};
 static constexpr std::size_t kDomain2{2u};
@@ -391,6 +392,7 @@ TEST_F(TestDomainBridgeEndToEnd, create_bridge_without_waiting_for_publisher)
     topic_bridge_options
   );
 
+  ASSERT_TRUE(wait_for_subscription(node_1_, topic_name));
   ASSERT_TRUE(wait_for_publisher(node_2_, topic_name));
 }
 
