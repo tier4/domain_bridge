@@ -155,7 +155,8 @@ TEST_F(TestParseDomainBridgeYamlConfig, topic_options)
       .deadline_auto()
       .lifespan(-5))
     .remap_name("")
-    .reversed(true)
+    .reversed(true),
+    domain_bridge::TopicBridgeOptions().wait_for_publisher(false)
   };
   const std::string yaml_path =
     (test_yaml_dir_ / std::filesystem::path{"topic_options.yaml"}).string();
@@ -176,6 +177,7 @@ TEST_F(TestParseDomainBridgeYamlConfig, topic_options)
     EXPECT_EQ(config.topics[i].second.remap_name(), expected[i].remap_name());
     EXPECT_EQ(config.topics[i].second.bidirectional(), expected[i].bidirectional());
     EXPECT_EQ(config.topics[i].second.reversed(), expected[i].reversed());
+    EXPECT_EQ(config.topics[i].second.wait_for_publisher(), expected[i].wait_for_publisher());
   }
 }
 
